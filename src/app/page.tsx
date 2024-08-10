@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <main>
-      <h1>Hello World!</h1>
+      <h1 className="my-5 text-5xl font-bold text-center">School Tasks</h1>
       <Schedule workWeek={wokrWeek} tasks={tasks} people={people} />
       <TaskDistribution assignments={assignments} />
     </main>
