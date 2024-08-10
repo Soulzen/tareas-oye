@@ -2,7 +2,6 @@ export interface Task {
   id: number
   name: string
   weight: number
-  timesPerWeek: number
 }
 
 export interface Person {

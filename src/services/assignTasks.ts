@@ -6,8 +6,12 @@ export const assignTasks = (
   week: Day[]
 ): WorkingPerson[] => {
   const workingPeople: WorkingPerson[] = people
-    .map((person) => ({ ...person, tasks: [], currentWeight: 0 }))
-    .sort((a, b) => a.lastWeekWork - b.lastWeekWork)
+    .map((person) => ({
+      ...person,
+      tasks: [],
+      currentWeight: person.lastWeekWork
+    }))
+    // .sort((a, b) => a.lastWeekWork - b.lastWeekWork)
     // .slice(0, 10)
     .sort((a, b) => Math.random() - 0.5)
 
@@ -18,10 +22,7 @@ export const assignTasks = (
   // Assign tasks to the working people
   tasksToAssign.forEach((task) => {
     while (task.timesLeft > 0) {
-      workingPeople.sort(
-        (a, b) =>
-          a.currentWeight + a.lastWeekWork - (b.currentWeight + b.lastWeekWork)
-      )
+      workingPeople.sort((a, b) => a.currentWeight - b.currentWeight)
       workingPeople[0].tasks.push(task)
       workingPeople[0].currentWeight += task.weight
       task.timesLeft--
@@ -29,6 +30,16 @@ export const assignTasks = (
   })
 
   console.log(workingPeople)
+
+  // Calculate the diference to the ideal 15min work time for each person
+  const deviation = workingPeople.map((person) => {
+    return {
+      id: person.id,
+      name: person.name,
+      lastWeekWork: person.currentWeight - 15
+    }
+  })
+  console.log(deviation)
   return workingPeople
 }
 
