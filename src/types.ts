@@ -6,8 +6,15 @@ export interface Task {
 }
 
 export interface Person {
+  id: number
   name: string
   lastWeekWork: number
+}
+
+export interface Day {
+  id: number
+  name: string
+  tasks: number[]
 }
 
 export interface Assignment {
@@ -15,9 +22,18 @@ export interface Assignment {
   tasks: Task[]
 }
 
-export interface WorkingPerson {
-  name: string
-  lastWeekWork: number
+export interface WorkingPerson extends Person {
   tasks: Task[]
   currentWeight: number
+}
+
+export interface WorkDay {
+  id: number
+  name: string
+  assignedTasks: assignedTask[]
+}
+
+export interface assignedTask {
+  task: number
+  person: number
 }

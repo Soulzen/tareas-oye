@@ -1,27 +1,20 @@
 import { assignTasks } from "@/services/assignTasks"
-import { Task } from "@/types"
-import { people, tasks } from "@/data/constants"
+import { people, tasks, week } from "@/data/constants"
+import { assignDays } from "@/services/assignDays"
+import Schedule from "@/components/schedule"
+import TaskDistribution from "@/components/taskDistribution"
 
 export default function Home() {
-  const assignments = assignTasks(tasks, people)
+  const assignments = assignTasks(tasks, people, week)
+  // Make a copy of the assignments array to avoid mutating the original
+  const devAssignments = JSON.parse(JSON.stringify(assignments))
+  const wokrWeek = assignDays(week, devAssignments)
+
   return (
     <main>
       <h1>Hello World!</h1>
-      <div className="flex flex-wrap min-h-screen items-center justify-between p-24">
-        {assignments.map((assignment) => (
-          <div key={assignment.name} className="p-3 w-50 bg-slate-700">
-            <h2>{assignment.name}</h2>
-            <ul>
-              {assignment.tasks.map((task: Task) => (
-                <li key={task.id}>
-                  {task.name} {task.weight}min
-                </li>
-              ))}
-            </ul>
-            <p>{assignment.currentWeight}min</p>
-          </div>
-        ))}
-      </div>
+      <Schedule workWeek={wokrWeek} tasks={tasks} people={people} />
+      <TaskDistribution assignments={assignments} />
     </main>
   )
 }
