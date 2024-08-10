@@ -1,4 +1,5 @@
 import { WorkingPerson, Task } from "@/types"
+import Assignmeet from "./assignment"
 
 interface TaskDistributionProps {
   assignments: WorkingPerson[]
@@ -6,19 +7,10 @@ interface TaskDistributionProps {
 
 const TaskDistribution = ({ assignments }: TaskDistributionProps) => {
   return (
-    <div className="flex flex-wrap min-h-screen items-center justify-between p-24">
+    <div className="py-24">
+      <h2 className="text-center text-2xl font-semibold">Taks Distribution</h2>
       {assignments.map((assignment) => (
-        <div key={assignment.name} className="m-1 p-3 w-50 bg-slate-700">
-          <h2>{assignment.name}</h2>
-          <ul>
-            {assignment.tasks.map((task: Task) => (
-              <li key={task.id}>
-                {task.name} {task.weight}min
-              </li>
-            ))}
-          </ul>
-          <p>{assignment.currentWeight}min</p>
-        </div>
+        <Assignmeet key={assignment.id} assignment={assignment} />
       ))}
     </div>
   )
