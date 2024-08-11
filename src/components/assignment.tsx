@@ -13,8 +13,8 @@ const Assignmeet = ({ assignment }: AssignmeetProps) => {
           Last Week Deviation {parseFloat(assignment.lastWeekWork.toFixed(2))}{" "}
           min
         </li>
-        {assignment.tasks.map((task: Task) => (
-          <li key={task.id} className="my-1 py-1 capitalize text-sm">
+        {assignment.tasks.map((task: Task, index) => (
+          <li key={index} className="my-1 py-1 capitalize text-sm">
             {task.name} {task.weight} min
           </li>
         ))}
