@@ -23,18 +23,18 @@ export const week: Day[] = [
 ]
 
 export const people: Person[] = [
-  { id: 1, name: "Alberto", lastWeekWork: 0 },
-  { id: 2, name: "Maka", lastWeekWork: 0 },
+  { id: 1, name: "Anja", lastWeekWork: 0 },
+  { id: 2, name: "Julia", lastWeekWork: 0 },
   { id: 3, name: "Luca", lastWeekWork: 0 },
-  { id: 4, name: "Anja", lastWeekWork: 0 },
+  { id: 4, name: "Alexandra", lastWeekWork: 0 },
   { id: 5, name: "Marek", lastWeekWork: 0 },
   { id: 6, name: "Agustin", lastWeekWork: 0 },
   { id: 7, name: "Mathias", lastWeekWork: 0 },
-  { id: 8, name: "Magnus", lastWeekWork: 0 },
-  { id: 9, name: "Julia", lastWeekWork: 0 },
+  // { id: 8, name: "Magnus", lastWeekWork: 0 },
+  { id: 9, name: "Maka", lastWeekWork: 0 },
   { id: 10, name: "Stein", lastWeekWork: 0 },
   { id: 11, name: "Andrei", lastWeekWork: 0 },
-  { id: 12, name: "Alexandra", lastWeekWork: 0 },
+  { id: 12, name: "Alberto", lastWeekWork: 0 },
   { id: 13, name: "Luisina", lastWeekWork: 0 },
   { id: 14, name: "Alexandre", lastWeekWork: 0 }
 ]

@@ -2,15 +2,14 @@ import { Person, Task, WorkingPerson, Day } from "../types"
 import { people, tasks, week } from "@/data/constants"
 
 export const assignTasks = (): WorkingPerson[] => {
-  const workingPeople: WorkingPerson[] = people
-    .map((person) => ({
-      ...person,
-      tasks: [],
-      currentWeight: person.lastWeekWork
-    }))
-    // .sort((a, b) => a.lastWeekWork - b.lastWeekWork)
-    // .slice(0, 10)
-    .sort((a, b) => Math.random() - 0.5)
+  const workingPeople: WorkingPerson[] = people.map((person) => ({
+    ...person,
+    tasks: [],
+    currentWeight: person.lastWeekWork
+  }))
+  // .sort((a, b) => a.lastWeekWork - b.lastWeekWork)
+  // .slice(0, 10)
+  // .sort((a, b) => Math.random() - 0.5)
 
   const tasksToAssign = tasks
     .map((task) => ({ ...task, timesLeft: getTaskFrequency(task, week) }))
