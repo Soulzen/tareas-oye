@@ -6,7 +6,7 @@ interface AssignmeetProps {
 
 const Assignmeet = ({ assignment }: AssignmeetProps) => {
   return (
-    <div className="p-2 w-50 bg-slate-700 rounded-xl basis-40 flex-1">
+    <div className="p-2 w-50 bg-slate-700 rounded-xl basis-[200px] flex-1">
       <h2 className="capitalize mb-3 text-lg font-bold">{assignment.name}</h2>
       <ul>
         <li className="my-1 py-1 capitalize text-sm">
