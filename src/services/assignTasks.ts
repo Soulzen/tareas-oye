@@ -29,14 +29,14 @@ export const assignTasks = (): WorkingPerson[] => {
   console.log(workingPeople)
 
   // Calculate the diference to the average time worked
-  const averageTime = workingPeople.reduce(
-    (acc, person) => acc + person.currentWeight,
-    0
-  )
+  const averageTime =
+    workingPeople.reduce((acc, person) => acc + person.currentWeight, 0) /
+    workingPeople.length
+
   const deviation = workingPeople.map((person) => ({
     id: person.id,
     name: person.name,
-    deviation: person.currentWeight - averageTime / workingPeople.length
+    deviation: person.currentWeight - averageTime
   }))
 
   console.log(deviation)
