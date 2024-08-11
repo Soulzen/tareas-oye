@@ -1,10 +1,7 @@
 import { Person, Task, WorkingPerson, Day } from "../types"
+import { people, tasks, week } from "@/data/constants"
 
-export const assignTasks = (
-  tasks: Task[],
-  people: Person[],
-  week: Day[]
-): WorkingPerson[] => {
+export const assignTasks = (): WorkingPerson[] => {
   const workingPeople: WorkingPerson[] = people
     .map((person) => ({
       ...person,

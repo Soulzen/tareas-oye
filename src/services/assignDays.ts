@@ -1,10 +1,8 @@
 import { WorkingPerson, Day, WorkDay } from "@/types"
+import { week } from "@/data/constants"
 
 // Returns an array of WorkDays with the assigned tasks by checking the tasks of the array of Days and assigning them to the WorkingPeople that have them pending on the week
-export const assignDays = (
-  week: Day[],
-  workingPeople: WorkingPerson[]
-): WorkDay[] => {
+export const assignDays = (workingPeople: WorkingPerson[]): WorkDay[] => {
   const workDays: WorkDay[] = week.map((day) => ({
     id: day.id,
     name: day.name,
