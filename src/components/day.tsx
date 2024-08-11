@@ -8,7 +8,7 @@ interface DayProps {
 
 const Day = ({ day, tasks, people }: DayProps) => {
   return (
-    <div className="p-3 m-1 w-50 bg-slate-700 rounded-xl">
+    <div className="p-3 m-1 w-50 bg-slate-700 rounded-xl lg:basis-full">
       <h2 className="capitalize mb-5 text-2xl font-bold">{day.name}</h2>
       <ul>
         {day.assignedTasks.map((task) => (

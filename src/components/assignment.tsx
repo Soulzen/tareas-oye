@@ -6,7 +6,7 @@ interface AssignmeetProps {
 
 const Assignmeet = ({ assignment }: AssignmeetProps) => {
   return (
-    <div className="p-3 m-1 w-50 bg-slate-700 rounded-xl">
+    <div className="p-2 w-50 bg-slate-700 rounded-xl basis-40 flex-1">
       <h2 className="capitalize mb-3 text-lg font-bold">{assignment.name}</h2>
       <ul>
         {assignment.tasks.map((task: Task) => (
