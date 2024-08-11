@@ -31,14 +31,17 @@ export const assignTasks = (
 
   console.log(workingPeople)
 
-  // Calculate the diference to the ideal 15min work time for each person
-  const deviation = workingPeople.map((person) => {
-    return {
-      id: person.id,
-      name: person.name,
-      lastWeekWork: person.currentWeight - 15
-    }
-  })
+  // Calculate the diference to the average time worked
+  const averageTime = workingPeople.reduce(
+    (acc, person) => acc + person.currentWeight,
+    0
+  )
+  const deviation = workingPeople.map((person) => ({
+    id: person.id,
+    name: person.name,
+    deviation: person.currentWeight - averageTime / workingPeople.length
+  }))
+
   console.log(deviation)
   return workingPeople
 }
