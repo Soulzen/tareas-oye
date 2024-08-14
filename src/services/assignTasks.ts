@@ -1,11 +1,23 @@
 import { Person, Task, WorkingPerson, Day } from "../types"
-import { people, tasks, week } from "@/data/constants"
+// import { people, tasks, week } from "@/data/constants"
+import {
+  getPeople,
+  getTasks,
+  getWeek,
+  writeAssignments,
+  writeAssignments2
+} from "./dbInterface"
 
-export const assignTasks = (): WorkingPerson[] => {
+export const assignTasks = async (): Promise<WorkingPerson[]> => {
+  const people = (await getPeople()) as Person[]
+  const tasks = (await getTasks()) as Task[]
+  const week = (await getWeek()) as Day[]
+
   const workingPeople: WorkingPerson[] = people.map((person) => ({
     ...person,
     tasks: [],
-    currentWeight: person.lastWeekWork
+    currentWeight: person.lastWeekWork,
+    deviation: 0
   }))
   // .sort((a, b) => a.lastWeekWork - b.lastWeekWork)
   // .slice(0, 10)
@@ -14,6 +26,10 @@ export const assignTasks = (): WorkingPerson[] => {
   const tasksToAssign = tasks
     .map((task) => ({ ...task, timesLeft: getTaskFrequency(task, week) }))
     .sort((a, b) => b.weight - a.weight)
+
+  const averageTime =
+    tasksToAssign.reduce((acc, task) => acc + task.weight * task.timesLeft, 0) /
+    workingPeople.length
 
   // Assign tasks to the working people
   tasksToAssign.forEach((task) => {
@@ -25,21 +41,13 @@ export const assignTasks = (): WorkingPerson[] => {
     }
   })
 
-  console.log(workingPeople)
-
-  // Calculate the diference to the average time worked
-  const averageTime =
-    workingPeople.reduce((acc, person) => acc + person.currentWeight, 0) /
-    workingPeople.length
-
   const deviation = workingPeople.map((person) => ({
-    id: person.id,
-    name: person.name,
-    deviation: person.currentWeight - averageTime
+    ...person,
+    deviation: averageTime - person.currentWeight
   }))
 
-  console.log(deviation)
-  return workingPeople
+  writeAssignments2(deviation)
+  return deviation
 }
 
 // gets the amount of times per week a task needs to be done

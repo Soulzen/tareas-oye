@@ -31,6 +31,5 @@ export const assignDays = (workingPeople: WorkingPerson[]): WorkDay[] => {
       }
     })
   })
-  console.log(workDays)
   return workDays
 }

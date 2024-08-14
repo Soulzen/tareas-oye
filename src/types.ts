@@ -27,6 +27,7 @@ export interface Assignment {
 export interface WorkingPerson extends Person {
   tasks: Task[]
   currentWeight: number
+  deviation: number
 }
 
 export interface WorkDay extends BaseDay {
