@@ -8,6 +8,7 @@ export interface Person {
   id: number
   name: string
   lastWeekWork: number
+  active: boolean
 }
 
 export interface BaseDay {

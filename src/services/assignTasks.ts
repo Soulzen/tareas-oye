@@ -41,12 +41,12 @@ export const assignTasks = async (): Promise<WorkingPerson[]> => {
     }
   })
 
-  const deviation = workingPeople.map((person) => ({
+  const deviation: WorkingPerson[] = workingPeople.map((person) => ({
     ...person,
     deviation: averageTime - person.currentWeight
   }))
 
-  writeAssignments2(deviation)
+  // writeAssignments2(deviation)
   return deviation
 }
 
